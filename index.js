@@ -48,10 +48,6 @@ app.post('/update_roles',
   }
   const { userId, roles } = req.body
 
-  if (!userId) {
-    return res.status(400).json({ error: 'User ID is required' })
-  }
-
   const newBCRoles = new Set(roles.map(e => azureToBCMap[e]))           // Set to remove duplicate values
 
   let serverUserRoles = BC_userData[userId] || []
